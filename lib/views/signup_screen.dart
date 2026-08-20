@@ -70,24 +70,24 @@ class SignupScreen extends GetView<SignupController> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: controller.firstNameCtrl,
+                  controller: controller.userNameCtrl,
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                    labelText: 'First name',
+                    labelText: 'User name',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  validator: (v) => _required(v, 'First name'),
+                  validator: (v) => _required(v, 'User name'),
                 ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: controller.lastNameCtrl,
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    labelText: 'Last name',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  validator: (v) => _required(v, 'Last name'),
-                ),
+                // const SizedBox(height: 16),
+                // TextFormField(
+                //   controller: controller.lastNameCtrl,
+                //   textCapitalization: TextCapitalization.words,
+                //   decoration: InputDecoration(
+                //     labelText: 'Last name',
+                //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                //   ),
+                //   validator: (v) => _required(v, 'Last name'),
+                // ),
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: controller.passwordCtrl,

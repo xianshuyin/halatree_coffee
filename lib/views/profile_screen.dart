@@ -8,11 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 class ProfileScreen extends GetView<ProfileController> {
   const ProfileScreen({super.key});
 
-  String _initials(String? first, String? last, String? email) {
+  String _initials(String? first, String? email) {
     final a = (first != null && first.isNotEmpty) ? first[0] : '';
-    final b = (last != null && last.isNotEmpty) ? last[0] : '';
-    if (a.isNotEmpty || b.isNotEmpty) {
-      return ('$a$b').toUpperCase();
+    //final b = (last != null && last.isNotEmpty) ? last[0] : '';
+    if (a.isNotEmpty) {
+      return ('$a').toUpperCase();
     }
     final e = email ?? '';
     if (e.isNotEmpty) return e[0].toUpperCase();
@@ -61,7 +61,7 @@ class ProfileScreen extends GetView<ProfileController> {
                         radius: 44,
                         backgroundColor: colorPrimary.withValues(alpha: 0.35),
                         child: Text(
-                          _initials(u.first_name, u.last_name, u.email),
+                          _initials(u.user_name, u.email),
                           style: GoogleFonts.roboto(
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
@@ -71,9 +71,9 @@ class ProfileScreen extends GetView<ProfileController> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        '${u.first_name ?? ''} ${u.last_name ?? ''}'.trim().isEmpty
+                        '${u.user_name ?? ''} '.trim().isEmpty
                             ? 'Member'
-                            : '${u.first_name ?? ''} ${u.last_name ?? ''}'.trim(),
+                            : '${u.user_name ?? ''}'.trim(),
                         textAlign: TextAlign.center,
                         style: GoogleFonts.roboto(
                           fontSize: 20,
@@ -128,15 +128,15 @@ class ProfileScreen extends GetView<ProfileController> {
                   const Divider(height: 1),
                   _ProfileTile(
                     icon: Icons.badge_outlined,
-                    label: 'First name',
-                    value: u.first_name ?? '—',
+                    label: 'User name',
+                    value: u.user_name ?? '—',
                   ),
-                  const Divider(height: 1),
-                  _ProfileTile(
-                    icon: Icons.person_outline_rounded,
-                    label: 'Last name',
-                    value: u.last_name ?? '—',
-                  ),
+                  // const Divider(height: 1),
+                  // _ProfileTile(
+                  //   icon: Icons.person_outline_rounded,
+                  //   label: 'Last name',
+                  //   value: u.last_name ?? '—',
+                  // ),
                 ],
               ),
               const SizedBox(height: 24),

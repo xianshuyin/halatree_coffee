@@ -22,8 +22,8 @@ abstract class Api {
   @POST("halatreeusersignup")
   Future<GeneralResponse> halatreeusersignup(
     @Field("email") String email,
-    @Field("first_name") String firstName,
-    @Field("last_name") String lastName,
+    @Field("user_name") String userName,
+   // @Field("last_name") String lastName,
     @Field("password") String password,
   );
 
@@ -45,8 +45,8 @@ abstract class Api {
   Future<GeneralResponse> updateuserprofile(
     @Field("id") String userId,
     @Field("email") String email,
-    @Field("first_name") String firstName,
-    @Field("last_name") String lastName,
+    @Field("user_name") String userName,
+    //@Field("last_name") String lastName,
   );
 
   @FormUrlEncoded()

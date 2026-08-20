@@ -12,8 +12,8 @@ import '../webservice/dio_util.dart';
 
 class EditProfileController extends GetxController {
   final emailCtrl = TextEditingController();
-  final firstNameCtrl = TextEditingController();
-  final lastNameCtrl = TextEditingController();
+  final userNameCtrl = TextEditingController();
+  //final lastNameCtrl = TextEditingController();
 
   final formKey = GlobalKey<FormState>();
   final loading = false.obs;
@@ -29,15 +29,15 @@ class EditProfileController extends GetxController {
     final u = Constants.userModel;
     _userId = u?.id;
     emailCtrl.text = u?.email?.trim() ?? '';
-    firstNameCtrl.text = u?.first_name?.trim() ?? '';
-    lastNameCtrl.text = u?.last_name?.trim() ?? '';
+    userNameCtrl.text = u?.user_name?.trim() ?? '';
+    //lastNameCtrl.text = u?.last_name?.trim() ?? '';
   }
 
   @override
   void onClose() {
     emailCtrl.dispose();
-    firstNameCtrl.dispose();
-    lastNameCtrl.dispose();
+    userNameCtrl.dispose();
+    //lastNameCtrl.dispose();
     super.onClose();
   }
 
@@ -57,19 +57,19 @@ class EditProfileController extends GetxController {
     }
 
     final email = emailCtrl.text.trim();
-    final firstName = firstNameCtrl.text.trim();
-    final lastName = lastNameCtrl.text.trim();
+    final userName = userNameCtrl.text.trim();
+    //final lastName = lastNameCtrl.text.trim();
 
     loading.value = true;
     try {
-      final res = await api.updateuserprofile(id, email, firstName, lastName);
+      final res = await api.updateuserprofile(id, email, userName);
       if (res.message != 'success') {
         showToastMessage(res.message ?? 'Could not update profile');
         return;
       }
 
       final prev = Constants.userModel;
-      final merged = _mergeUser(prev, res.user, email, firstName, lastName);
+      final merged = _mergeUser(prev, res.user, email, userName);
       Constants.userModel = merged;
 
       cache.write(AuthStorage.emailKey, email);
@@ -98,14 +98,14 @@ class EditProfileController extends GetxController {
     UserModel? previous,
     UserModel? fromApi,
     String email,
-    String firstName,
-    String lastName,
+    String userName,
+    //String lastName,
   ) {
     final u = fromApi ?? UserModel();
     u.id = fromApi?.id ?? previous?.id;
     u.email = fromApi?.email ?? email;
-    u.first_name = fromApi?.first_name ?? firstName;
-    u.last_name = fromApi?.last_name ?? lastName;
+    u.user_name = fromApi?.user_name ?? userName;
+   // u.last_name = fromApi?.last_name ?? lastName;
     u.total_points = fromApi?.total_points ?? previous?.total_points;
     u.password = fromApi?.password ?? previous?.password;
     return u;

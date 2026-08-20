@@ -76,24 +76,24 @@ class EditProfileScreen extends GetView<EditProfileController> {
                 ),
                 const SizedBox(height: 16),
                 TextFormField(
-                  controller: controller.firstNameCtrl,
+                  controller: controller.userNameCtrl,
                   textCapitalization: TextCapitalization.words,
                   decoration: InputDecoration(
-                    labelText: 'First name',
+                    labelText: 'user name',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
                   ),
-                  validator: (v) => _requiredName(v, 'First name'),
+                  validator: (v) => _requiredName(v, 'User name'),
                 ),
-                const SizedBox(height: 16),
-                TextFormField(
-                  controller: controller.lastNameCtrl,
-                  textCapitalization: TextCapitalization.words,
-                  decoration: InputDecoration(
-                    labelText: 'Last name',
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
-                  ),
-                  validator: (v) => _requiredName(v, 'Last name'),
-                ),
+                // const SizedBox(height: 16),
+                // TextFormField(
+                //   controller: controller.lastNameCtrl,
+                //   textCapitalization: TextCapitalization.words,
+                //   decoration: InputDecoration(
+                //     labelText: 'Last name',
+                //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                //   ),
+                //   validator: (v) => _requiredName(v, 'Last name'),
+                // ),
                 const SizedBox(height: 28),
                 Obx(() {
                   final busy = controller.loading.value;

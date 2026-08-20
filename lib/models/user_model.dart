@@ -5,8 +5,8 @@ part 'user_model.g.dart';
 class UserModel {
   @JsonKey(name: 'id') String? id;
   @JsonKey(name: 'email') String? email;
-  @JsonKey(name: 'first_name') String? first_name;
-  @JsonKey(name: 'last_name') String? last_name;
+  @JsonKey(name: 'user_name') String? user_name;
+  //@JsonKey(name: 'last_name') String? last_name;
   @JsonKey(name: 'total_points') String? total_points;
   @JsonKey(name: 'password') String? password;
 

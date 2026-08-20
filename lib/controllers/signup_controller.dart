@@ -11,8 +11,8 @@ import '../webservice/dio_util.dart';
 
 class SignupController extends GetxController {
   final emailCtrl = TextEditingController();
-  final firstNameCtrl = TextEditingController();
-  final lastNameCtrl = TextEditingController();
+  final userNameCtrl = TextEditingController();
+ // final lastNameCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final confirmPasswordCtrl = TextEditingController();
   final loading = false.obs;
@@ -30,8 +30,8 @@ class SignupController extends GetxController {
   @override
   void onClose() {
     emailCtrl.dispose();
-    firstNameCtrl.dispose();
-    lastNameCtrl.dispose();
+    userNameCtrl.dispose();
+   // lastNameCtrl.dispose();
     passwordCtrl.dispose();
     confirmPasswordCtrl.dispose();
     super.onClose();
@@ -60,8 +60,8 @@ class SignupController extends GetxController {
     try {
       final res = await api.halatreeusersignup(
         emailCtrl.text.trim(),
-        firstNameCtrl.text.trim(),
-        lastNameCtrl.text.trim(),
+        userNameCtrl.text.trim(),
+        //lastNameCtrl.text.trim(),
         passwordCtrl.text,
       );
       if (res.message!="success") {

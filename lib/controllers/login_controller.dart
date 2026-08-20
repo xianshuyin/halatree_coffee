@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -50,6 +51,7 @@ class LoginController extends GetxController {
     loading.value = true;
     try {
       final res = await api.halatreeuserlogin(email, password);
+
       if (res.message!="success") {
         showToastMessage(res.message ?? 'Login failed');
         return;
@@ -58,11 +60,27 @@ class LoginController extends GetxController {
       persistCredentials(email, password);
       showToastMessage(res.message ?? 'Welcome');
       await Get.offAllNamed(RouteName.mainView);
-    } catch (_) {
-      showToastMessage('Login failed. Please try again.');
+    } catch (e) {
+      showToastMessage(_messageFromError(e));
     } finally {
       loading.value = false;
     }
+  }
+
+  String _messageFromError(Object e) {
+    if (e is DioException) {
+      final data = e.response?.data;
+      if (data is Map && data['message'] != null) {
+        return data['message'].toString();
+      }
+      if (data is String && data.trim().isNotEmpty) {
+        return data;
+      }
+      if (e.response?.statusCode == 403) {
+        return 'Server blocked the login request (403).';
+      }
+    }
+    return 'Login failed. Please try again.';
   }
 
   void openSignup() => Get.toNamed(RouteName.signupView);

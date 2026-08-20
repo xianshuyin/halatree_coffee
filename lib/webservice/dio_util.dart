@@ -49,6 +49,11 @@ class DioUtil {
 
     Map<String, dynamic> headers = <String, dynamic>{};
     headers['Accept'] = 'application/json';
+    // Live hosting (Imunify360) blocks Dart's default User-Agent.
+    headers['User-Agent'] = Platform.isIOS
+        ? 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
+        : 'Mozilla/5.0 (Linux; Android 13; Mobile) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36';
+    headers['Accept-Language'] = 'en-US,en;q=0.9';
 
     String? platform;
     if (Platform.isAndroid) {

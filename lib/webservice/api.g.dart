@@ -49,19 +49,13 @@ class _Api implements Api {
   @override
   Future<GeneralResponse> halatreeusersignup(
     String email,
-    String firstName,
-    String lastName,
+    String userName,
     String password,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {
-      'email': email,
-      'first_name': firstName,
-      'last_name': lastName,
-      'password': password,
-    };
+    final _data = {'email': email, 'user_name': userName, 'password': password};
     final _options = _setStreamType<GeneralResponse>(
       Options(
             method: 'POST',
@@ -159,18 +153,12 @@ class _Api implements Api {
   Future<GeneralResponse> updateuserprofile(
     String userId,
     String email,
-    String firstName,
-    String lastName,
+    String userName,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {
-      'id': userId,
-      'email': email,
-      'first_name': firstName,
-      'last_name': lastName,
-    };
+    final _data = {'id': userId, 'email': email, 'user_name': userName};
     final _options = _setStreamType<GeneralResponse>(
       Options(
             method: 'POST',
