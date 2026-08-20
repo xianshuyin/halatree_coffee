@@ -64,6 +64,13 @@ abstract class Api {
   );
 
   @FormUrlEncoded()
+  @POST("updatepassword")
+  Future<GeneralResponse> updatepassword(
+    @Field("user_id") String userId,
+    @Field("password") String password,
+  );
+
+  @FormUrlEncoded()
   @POST("addcustomercredit")
   Future<GeneralResponse> addcustomercredit(
     @Field("customer_id") String customer_id,

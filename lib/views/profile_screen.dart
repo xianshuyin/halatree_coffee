@@ -150,6 +150,17 @@ class ProfileScreen extends GetView<ProfileController> {
                   foregroundColor: colorOnPrimary,
                 ),
               ),
+              const SizedBox(height: 12),
+              OutlinedButton.icon(
+                onPressed: controller.onUpdatePasswordPressed,
+                icon: const Icon(Icons.lock_outline_rounded, size: 20),
+                label: Text('Update password', style: GoogleFonts.roboto(fontWeight: FontWeight.w600)),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  foregroundColor: colorPrimaryDark,
+                  side: BorderSide(color: colorPrimaryDark),
+                ),
+              ),
             ],
           );
         }),
