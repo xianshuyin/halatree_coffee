@@ -52,14 +52,14 @@ class MainController extends GetxController {
       latitude: 21.278432,
       longitude: -157.824195,
     ),
-    ShopContact(
-      name: 'Hala Tree Cafe Kaaawa',
-      phone: 'tel:+17815662669',
-      email: 'mailto:info@halatreecafe.com',
-      website: 'https://www.halatreecafe.com/',
-      latitude: 21.559102,
-      longitude: -157.862947,
-    ),
+    // ShopContact(
+    //   name: 'Hala Tree Cafe Kaaawa',
+    //   phone: 'tel:+17815662669',
+    //   email: 'mailto:info@halatreecafe.com',
+    //   website: 'https://www.halatreecafe.com/',
+    //   latitude: 21.559102,
+    //   longitude: -157.862947,
+    // ),
     ShopContact(
       name: 'Hala Tree Captain Cook',
       phone: 'tel:+18082385005',
@@ -441,6 +441,7 @@ class MainController extends GetxController {
                             }
                             dialogClosed = true;
                             Get.back();
+                            showToastMessage("Redeem succeed");
                           } else {
                             showToastMessage(res.message ?? 'Redeem failed');
                           }
