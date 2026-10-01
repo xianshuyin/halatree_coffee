@@ -712,7 +712,7 @@ Widget _newsUnavailableMessage() {
 }
 
 class _SocialIcon extends StatelessWidget {
-  final IconData icon;
+  final FaIconData icon;
   final VoidCallback onTap;
 
   const _SocialIcon({required this.icon, required this.onTap});
